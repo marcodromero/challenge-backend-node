@@ -1,4 +1,5 @@
 const express = require('express');
+const routerApi = require('./routes/index.js')
 const { Sequelize, DataTypes } = require('sequelize');
 const app = express();
 const port = 3000;
@@ -7,6 +8,7 @@ app.listen(port, ()=>{
     console.log('Mi port' + port);
 });
 
+/*
 const sequelize = new Sequelize('disney', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
@@ -35,10 +37,9 @@ const Character = sequelize.define('Character', {
     }
 });
 
-sequelize.sync({force:true}); 
+sequelize.sync({force:true}); */
+
+routerApi(app);
 
 
 
-app.get('/', (req, res)=>{
-    res.send('Hola Mundo');
-});
