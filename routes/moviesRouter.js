@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const moviesService = require('../services/moviesService.js');
+const service = new moviesService();
 
 router.get('/', (req, res)=>{
     const {name, genere, order} = req.query;
@@ -7,6 +9,7 @@ router.get('/', (req, res)=>{
 });
 
 router.get('/', (req, res)=>{
+    const movies = service.getMovies();
     res.send('Todas las peliculas con sus datos (imagen, titulo y fecha de creacion)');
 });
 

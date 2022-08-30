@@ -1,13 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
+const characterService = require('../services/charactersService.js');
+const service = new characterService();
+
+/*
 router.get('/', (req, res)=>{
     const {name, movies, age, weight} = req.query;
     res.send('query:Busqueda de personajes por el nombre, filtrar por edad, peso o pelicula/serie');
-});
+}); */
 
-router.get('/', (req, res)=>{
-    res.send('Todos los personajes');
+router.get('/', async (req, res)=>{
+    const characters = await service.getCharacters();
+    res.json(characters); 
+   
 });
 
 router.get('/:id', (req, res)=>{
